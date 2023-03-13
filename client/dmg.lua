@@ -1,11 +1,19 @@
 Citizen.CreateThread(function()
   while true do
-    local Sleep = 500
+    local Sleep = 1000
     local playerPed = GetPlayerPed(-1)
     local weaponsConfig = Config.Weapons[GetSelectedPedWeapon(playerPed)]
 
-    if weaponsConfig then
+    if weaponsConfig and weaponsConfig.model ~= Config.Weapons[`WEAPON_UNARMED`].model then
       Sleep = 100
+      
+      if Config.IsDriverDisableWeapon then
+        if GetPedInVehicleSeat(GetVehiclePedIsIn(playerPed), -1) == playerPed then
+          DisableAimCamThisUpdate()
+          RemoveAllPedWeapons(playerPed)
+        end
+      end
+
       if weaponsConfig.disableCritical then
         SetPedSuffersCriticalHits(playerPed, false)
       end

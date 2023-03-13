@@ -5,6 +5,7 @@
 Config = {}
 Config.DisplayAmmo = false
 Config.DisplayCrosshair = false
+Config.IsDriverDisableWeapon = true
 
 Config.Weapons = {
   -- [[ MALE ]] --
