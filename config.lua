@@ -98,7 +98,7 @@ Config.Weapons = {
 
   [`WEAPON_APPISTOL`] = { -- POLICE
     model = `WEAPON_APPISTOL`, 
-    hash, 584646201,
+    hash = 584646201,
     damage = 0.45, 
     disableCritical = true,
     recoil = 0.1
