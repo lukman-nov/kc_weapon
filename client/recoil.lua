@@ -120,8 +120,17 @@ Citizen.CreateThread(function()
 		local playerPed = GetPlayerPed(-1)
 		local weapon = GetSelectedPedWeapon(playerPed)
 		local currentWeapon = GetCurrentPedWeapon(playerPed)
+
+		if Config.UseGKSPhone then
+			exports["gksphone"]:BlockOpenPhone(false)
+		end
+
 		if currentWeapon then
 			Sleep = 1
+			
+			if Config.UseGKSPhone then
+				exports["gksphone"]:BlockOpenPhone(true)
+			end
 
 			DisplayAmmoThisFrame(Config.DisplayAmmo)
 			ManageReticle(Config.DisplayCrosshair)
