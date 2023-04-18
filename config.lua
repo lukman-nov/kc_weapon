@@ -6,6 +6,7 @@ Config = {}
 Config.DisplayAmmo = false
 Config.DisplayCrosshair = false
 Config.IsDriverDisableWeapon = true
+Config.UseGKSPhone = true
 
 Config.Weapons = {
   -- [[ MALE ]] --
@@ -144,6 +145,15 @@ Config.Weapons = {
     disableCritical = true,
     recoil = 0.18
   },
+
+  [`WEAPON_MICROSMG`] = { -- BADSIDE
+    model = `WEAPON_MICROSMG`,
+    hash = 324215364,
+    damage = 0.75, 
+    disableCritical = true,
+    recoil = 0.18
+  },
+
   [`WEAPON_SMG`] = { -- POLICE
     model = `WEAPON_SMG`,
     hash = 736523883,
@@ -167,7 +177,7 @@ Config.Weapons = {
     hash = -1074790547,
     damage = 0.50, 
     disableCritical = true,
-    recoil = 0.13
+    recoil = 0.23
   },
 
   -- [[ SHOUTGUN ]] --
