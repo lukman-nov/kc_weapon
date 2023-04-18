@@ -1,12 +1,12 @@
 Citizen.CreateThread(function()
+  N_0x4757f00bc6323cfe(Config.Weapons[`WEAPON_UNARMED`].model, Config.Weapons[`WEAPON_UNARMED`].damage)
   while true do
     local Sleep = 1000
     local playerPed = GetPlayerPed(-1)
     local weaponsConfig = Config.Weapons[GetSelectedPedWeapon(playerPed)]
 
     if weaponsConfig and weaponsConfig.model ~= Config.Weapons[`WEAPON_UNARMED`].model then
-      Sleep = 100
-      
+      Sleep = 50
       if Config.IsDriverDisableWeapon then
         if GetPedInVehicleSeat(GetVehiclePedIsIn(playerPed), -1) == playerPed then
           DisableAimCamThisUpdate()
