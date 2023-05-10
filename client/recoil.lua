@@ -120,17 +120,10 @@ Citizen.CreateThread(function()
 		local playerPed = GetPlayerPed(-1)
 		local weapon = GetSelectedPedWeapon(playerPed)
 		local currentWeapon = GetCurrentPedWeapon(playerPed)
+		local weaponConfig = Config.Weapons[GetSelectedPedWeapon(playerPed)]
 
-		if Config.UseGKSPhone then
-			exports["gksphone"]:BlockOpenPhone(false)
-		end
-
-		if currentWeapon then
+		if currentWeapon and weapon then
 			Sleep = 1
-			
-			if Config.UseGKSPhone then
-				exports["gksphone"]:BlockOpenPhone(true)
-			end
 
 			DisplayAmmoThisFrame(Config.DisplayAmmo)
 			ManageReticle(Config.DisplayCrosshair)
@@ -141,12 +134,8 @@ Citizen.CreateThread(function()
 				DisableControlAction(1, 142, true)
 			end
 			
-			for k, v in pairs(Config.Weapons) do
-				if weapon == v.hash then
-					if IsPedShooting(playerPed) then
-						ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', v.recoil)
-					end
-				end
+			if IsPedShooting(playerPed) then
+				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', weaponConfig.recoil)
 			end
 		end
 		Citizen.Wait(Sleep)

@@ -6,7 +6,7 @@ Config = {}
 Config.DisplayAmmo = false
 Config.DisplayCrosshair = false
 Config.IsDriverDisableWeapon = true
-Config.UseGKSPhone = true
+-- Config.WhiteListWeapon = true
 
 Config.Weapons = {
   -- [[ MALE ]] --

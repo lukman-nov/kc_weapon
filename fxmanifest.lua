@@ -10,5 +10,6 @@ description 'Weapon Damage & Recoil Adjusment'
 client_scripts {
     'config.lua',
     'client/dmg.lua',
-    'client/recoil.lua'
+    'client/recoil.lua',
+    'client/whitelist.lua',
 }

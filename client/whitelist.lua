@@ -1,0 +1,10 @@
+-- Citizen.CreateThread(function()
+--   while Config.WhiteListWeapon do
+--     local weaponsConfig = Config.Weapons[GetSelectedPedWeapon(GetPlayerPed(-1))]
+--     local weaponsGroup = GetWeapontypeGroup(GetSelectedPedWeapon(GetPlayerPed(-1)))
+--     if weaponsConfig == nil and not weaponsGroup == 'GROUP_MELEE' then
+--       RemoveAllPedWeapons(GetPlayerPed(-1))
+--     end
+--     Citizen.Wait(1000)
+--   end
+-- end)
