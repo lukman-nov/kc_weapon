@@ -6,7 +6,7 @@ Config = {}
 Config.DisplayAmmo = false
 Config.DisplayCrosshair = false
 Config.IsDriverDisableWeapon = true
--- Config.WhiteListWeapon = true
+Config.WhiteListWeapon = true
 
 Config.Weapons = {
   -- [[ MALE ]] --
@@ -73,6 +73,7 @@ Config.Weapons = {
     disableCritical = true,
     recoil = 0.001
   },
+  
   [`WEAPON_SWITCHBLADE`] = {
     model = `WEAPON_SWITCHBLADE`,
     hash = -538741184,
@@ -80,6 +81,7 @@ Config.Weapons = {
     disableCritical = true,
     recoil = 0.001
   },
+
   [`WEAPON_WRENCH`] = {
     model = `WEAPON_WRENCH`,
     hash = 419712736,
@@ -88,7 +90,23 @@ Config.Weapons = {
     recoil = 0.001
   },
 
+  [`WEAPON_BATTLEAXE`] = {
+    model = `WEAPON_BATTLEAXE`,
+    hash = 419712736,
+    damage = 0.35, 
+    disableCritical = true,
+    recoil = 0.001
+  },
+
   -- [[ PISTOL ]] --
+  [`WEAPON_STUNGUN`] = { -- POLICE
+    model = `WEAPON_STUNGUN`,
+    hash = 911657153,
+    damage = 0.0, 
+    disableCritical = true,
+    recoil = 0.1
+  },
+
   [`WEAPON_REVOLVER`] = { -- POLICE
     model = `WEAPON_REVOLVER`,
     hash = -1045183535,
@@ -102,13 +120,13 @@ Config.Weapons = {
     hash = 584646201,
     damage = 0.45, 
     disableCritical = true,
-    recoil = 0.1
+    recoil = 0.15
   },
 
   [`WEAPON_CERAMICPISTOL`] = { -- POLICE
     model = `WEAPON_CERAMICPISTOL`, 
     hash, 727643628,
-    damage = 0.75, 
+    damage = 0.55, 
     disableCritical = true,
     recoil = 0.1
   },
@@ -146,13 +164,13 @@ Config.Weapons = {
     recoil = 0.18
   },
 
-  [`WEAPON_MICROSMG`] = { -- BADSIDE
-    model = `WEAPON_MICROSMG`,
-    hash = 324215364,
-    damage = 0.75, 
-    disableCritical = true,
-    recoil = 0.18
-  },
+  -- [`WEAPON_MICROSMG`] = { -- BADSIDE
+  --   model = `WEAPON_MICROSMG`,
+  --   hash = 324215364,
+  --   damage = 0.75, 
+  --   disableCritical = true,
+  --   recoil = 0.18
+  -- },
 
   [`WEAPON_SMG`] = { -- POLICE
     model = `WEAPON_SMG`,
@@ -190,13 +208,13 @@ Config.Weapons = {
     recoil = 0.8
   },
 
-  [`WEAPON_PUMPSHOTGUN`] = {
-    model = `WEAPON_PUMPSHOTGUN`, 
-    hash = 	487013001,
-    damage = 0.27,
-    disableCritical = true,
-    recoil = 0.8
-  },
+  -- [`WEAPON_PUMPSHOTGUN`] = {
+  --   model = `WEAPON_PUMPSHOTGUN`, 
+  --   hash = 	487013001,
+  --   damage = 0.27,
+  --   disableCritical = true,
+  --   recoil = 0.8
+  -- },
 
   -- [[ SNIPER ]] --
   [`WEAPON_HEAVYSNIPER`] = {

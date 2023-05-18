@@ -85,18 +85,32 @@ function ManageReticle(status)
 			HideHudComponentThisFrame(14)
 		end 
 	end
-end 
+end
 
 Citizen.CreateThread(function()
 	while true do
 		local Sleep = 1000
 		local playerPed = GetPlayerPed(-1)
 		local weapon = GetSelectedPedWeapon(playerPed)
-		if GetCurrentPedWeapon(playerPed) then
-			Sleep = 1
-			if IsPedShooting(PlayerPedId()) and not IsPedDoingDriveby(PlayerPedId()) then
-				local _, wep = GetCurrentPedWeapon(PlayerPedId())
-				_, cAmmo = GetAmmoInClip(PlayerPedId(), wep)
+		local currentWeapon = GetCurrentPedWeapon(playerPed)
+		local weaponConfig = Config.Weapons[GetSelectedPedWeapon(playerPed)]
+
+		if currentWeapon and weapon and weaponConfig then
+			Sleep = 0
+			DisplayAmmoThisFrame(Config.DisplayAmmo)
+			ManageReticle(Config.DisplayCrosshair)
+
+			if IsPedArmed(playerPed, 6) then
+				DisableControlAction(1, 140, true)
+				DisableControlAction(1, 141, true)
+				DisableControlAction(1, 142, true)
+			end
+
+			if IsPedShooting(playerPed) and not IsPedDoingDriveby(playerPed) then
+				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', weaponConfig.recoil)
+
+				local _, wep = currentWeapon
+				_, cAmmo = GetAmmoInClip(playerPed, wep)
 				if recoils[wep] and recoils[wep] ~= 0 then
 					tv = 0
 					repeat 
@@ -108,34 +122,6 @@ Citizen.CreateThread(function()
 						tv = tv+0.4
 					until tv >= recoils[wep]
 				end
-			end
-		end
-		Citizen.Wait(Sleep)
-	end
-end)
-
-Citizen.CreateThread(function()
-	while true do
-		local Sleep = 1000
-		local playerPed = GetPlayerPed(-1)
-		local weapon = GetSelectedPedWeapon(playerPed)
-		local currentWeapon = GetCurrentPedWeapon(playerPed)
-		local weaponConfig = Config.Weapons[GetSelectedPedWeapon(playerPed)]
-
-		if currentWeapon and weapon then
-			Sleep = 1
-
-			DisplayAmmoThisFrame(Config.DisplayAmmo)
-			ManageReticle(Config.DisplayCrosshair)
-
-			if IsPedArmed(playerPed, 6) then
-				DisableControlAction(1, 140, true)
-				DisableControlAction(1, 141, true)
-				DisableControlAction(1, 142, true)
-			end
-			
-			if IsPedShooting(playerPed) then
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', weaponConfig.recoil)
 			end
 		end
 		Citizen.Wait(Sleep)
