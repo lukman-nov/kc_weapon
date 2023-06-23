@@ -13,6 +13,7 @@ Config.PlayerUnload = 'esx:onPlayerLogout'
 -- Config.PlayerLoaded = 'QBCore:Client:OnPlayerLoaded'
 -- Config.PlayerUnload = 'QBCore:Client:OnPlayerUnload'
 
+Config.CheckForUpdates  = true
 Config.DisplayAmmo      = false -- display ammo on screen
 Config.DisplayCrosshair = false -- display default crosshair on screen
 Config.WhitelistWeapon  = true  -- if set true, then players cannot use weapons that are not in the Config.Weapons list.
