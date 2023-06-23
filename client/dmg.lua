@@ -1,17 +1,25 @@
 Citizen.CreateThread(function()
-  N_0x4757f00bc6323cfe(Config.Weapons[`WEAPON_UNARMED`].model, Config.Weapons[`WEAPON_UNARMED`].damage)
+  N_0x4757f00bc6323cfe(GetHashKey('WEAPON_UNARMED'), Config.Weapons[`WEAPON_UNARMED`].damage)
   while true do
-    local Sleep = 1000
-    local playerPed = PlayerPedId()
-    local weaponsConfig = Config.Weapons[GetSelectedPedWeapon(playerPed)]
+    Citizen.Wait(0)
+    local playerPed = GetPlayerPed(-1)
+    local _, hash = GetCurrentPedWeapon(playerPed, false)
+    local weaponsConfig = Config.Weapons[hash]
 
-    if weaponsConfig and weaponsConfig.model ~= Config.Weapons[`WEAPON_UNARMED`].model then
-      Sleep = 0
-      if weaponsConfig.disableCritical then
-        SetPedSuffersCriticalHits(playerPed, false)
+    if weaponsConfig ~= nil then 
+      SetPedSuffersCriticalHits(playerPed, weaponsConfig.critical)
+      if weaponsConfig.name ~= 'WEAPON_UNARMED' then
+        N_0x4757f00bc6323cfe(GetHashKey(weaponsConfig.name), weaponsConfig.damage)
+      else
+        Citizen.Wait(1000)
       end
-      N_0x4757f00bc6323cfe(weaponsConfig.model, weaponsConfig.damage)
+    else
+      if Config.Whitelist then
+        RemoveWeaponFromPed(playerPed, hash)
+      else
+        N_0x4757f00bc6323cfe(hash, Config.DefaultDamage)
+        Citizen.Wait(0)
+      end
     end
-    Citizen.Wait(Sleep)
   end
 end)

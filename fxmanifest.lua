@@ -1,15 +1,29 @@
-fx_version 'adamant'
-game 'gta5'
+fx_version      'adamant'
+game            'gta5'
 
-name 'kc_weapon'
-author 'Lukman_Nov#5797'
-version '1.0.3'
-repository 'https://github.com/lukman-nov/kc_weapon'
-description 'Weapon Damage & Recoil Adjusment'
+name            'kc_weapon'
+author          'Lukman_Nov#5797'
+version         '2.0.4'
+description     'Weapon Core'
+lua54           'yes'
+
+shared_script   '@ox_lib/init.lua'
 
 client_scripts {
     'config.lua',
     'client/dmg.lua',
     'client/recoil.lua',
-    'client/whitelist.lua',
+    'client/onback.lua',
+}
+
+escrow_ignore {
+    'config.lua',
+    'client/dmg.lua',
+    'client/recoil.lua',
+    'client/onback.lua'
+}
+
+dependencies {
+    'ox_lib',
+    'ox_inventory'
 }

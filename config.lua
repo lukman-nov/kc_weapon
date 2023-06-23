@@ -1,235 +1,337 @@
--- IMPORTANT --
--- If you input a new weapon don't forget the hash keys, you can't find hash keys on https://gtahash.ru/weapons/
--- If you not input hash keys, recoil not effect!
-
 Config = {}
-Config.DisplayAmmo = false
-Config.DisplayCrosshair = false
-Config.IsDriverDisableWeapon = true
-Config.WhiteListWeapon = true
+
+-- [[ ESX ]] --
+Config.Core         = 'ESX'
+Config.CoreFolder   = 'es_extended'
+Config.PlayerLoaded = 'esx:playerLoaded'
+Config.PlayerUnload = 'esx:onPlayerLogout'
+
+-- [[ QB ]] --
+
+-- Config.Core         = 'QB'
+-- Config.CoreFolder   = 'qb-core'
+-- Config.PlayerLoaded = 'QBCore:Client:OnPlayerLoaded'
+-- Config.PlayerUnload = 'QBCore:Client:OnPlayerUnload'
+
+Config.DisplayAmmo      = false -- display ammo on screen
+Config.DisplayCrosshair = false -- display default crosshair on screen
+Config.WhitelistWeapon  = true  -- if set true, then players cannot use weapons that are not in the Config.Weapons list.
+Config.DefaultDamage    = 0.0   -- default damage for weapons that are not listed
+Config.DefaultRecoil    = 5.0   -- default recoil for weapons that are not listed
+
+Config.Officer = {
+  ['police'] = true,
+  ['offpolice'] = true,
+}
+
+-- IMPORTANT!
+-- IF YOU ADD WEAPONS TO THE LIST MAKE SURE YOU USE `` QUOTES FOR THE WEAPON HASH INSTEAD OF '' QUOTES
+-- YOU CAN GET WEAPON MODEL ON https://gtahash.ru/
 
 Config.Weapons = {
   -- [[ MALE ]] --
-  [`WEAPON_UNARMED`] = {
-    model = `WEAPON_UNARMED`,
-    hash = nil,
-    damage = 0.25, 
-    disableCritical = true,
-    recoil = 0.1
+  [`WEAPON_UNARMED`] = { -- weapon hash
+    name = 'WEAPON_UNARMED', -- weapon name
+    damage = 0.25, -- weapon damage
+    critical = false, -- critical or headshot
+    recoil = 0.0, -- weapon Recoil
+    officer = nil, -- location for weapon on body if player are officer (DON'T SET NIL)
+    usual = nil, -- location for weapon on body if player not officer (DON'T SET NIL)
+    model = nil -- weapon model (DON'T SET NIL)
+  },
+
+  [`WEAPON_PETROLCAN`] = {
+    name = 'WEAPON_PETROLCAN',
+    damage = 0.0,
+    critical = false,
+    recoil = 0.0,
+    officer = { bone = 24818, x = 65536.0, y = 65536.0, z = 65536.0, xRot = 0.0, yRot = 0.0, zRot = 0.0},
+    usual = { bone = 24818, x = 65536.0, y = 65536.0, z = 65536.0, xRot = 0.0, yRot = 0.0, zRot = 0.0},
+    model = 'w_am_jerrycan',
   },
 
   [`WEAPON_NIGHTSTICK`] = {
-    model = `WEAPON_NIGHTSTICK`,
-    hash = 1737195953,
+    name = 'WEAPON_NIGHTSTICK',
     damage = 0.25,
-    disableCritical = true,
-    recoil = 0.001
+    critical = false,
+    recoil = 0.001,
+    officer = { bone = 51826, x = -0.01, y = 0.0, z = 0.1, xRot = -90.0, yRot = 180.0, zRot = 90.0},
+    usual = { bone = 51826, x = -0.01, y = 0.0, z = 0.1, xRot = -90.0, yRot = 180.0, zRot = 90.0},
+    model = 'w_me_nightstick',
   },
 
   [`WEAPON_FLASHLIGHT`] = {
-    model = `WEAPON_FLASHLIGHT`,
-    hash = -1951375401,
+    name = 'WEAPON_FLASHLIGHT',
     damage = 0.15, 
-    disableCritical = true,
-    recoil = 0.001
+    critical = false,
+    recoil = 0.001,
+    officer = { bone = 57597, x = 0.1, y = -0.13, z = -0.1, xRot = 180.0, yRot = -180.0, zRot = 0.0},
+    usual = { bone = 57597, x = 0.1, y = -0.13, z = -0.1, xRot = 180.0, yRot = -180.0, zRot = 0.0},
+    model = 'w_me_flashlight',
   },
 
   [`WEAPON_KNIFE`] = {
-    model = `WEAPON_KNIFE`,
-    hash = -1716189206,
+    name = 'WEAPON_KNIFE',
     damage = 0.35, 
-    disableCritical = true,
-    recoil = 0.001
+    critical = false,
+    recoil = 0.001,
+    officer = { bone = 57597, x = 0.1, y = -0.13, z = -0.12, xRot = 180.0, yRot = -180.0, zRot = 0.0},
+    usual = { bone = 57597, x = 0.1, y = -0.13, z = -0.12, xRot = 180.0, yRot = -180.0, zRot = 0.0},
+    model = 'prop_w_me_knife_01',
   },
 
   [`WEAPON_KNUCKLE`] = {
-    model = `WEAPON_KNUCKLE`,
-    hash = -656458692,
+    name = 'WEAPON_KNUCKLE',
     damage = 0.25, 
-    disableCritical = true,
-    recoil = 0.001
+    critical = false,
+    recoil = 0.001,
+    officer = { bone = 57597, x = 0.1, y = -0.13, z = -0.05, xRot = 180.0, yRot = -180.0, zRot = 90.0},
+    usual = { bone = 57597, x = 0.1, y = -0.13, z = -0.05, xRot = 180.0, yRot = -180.0, zRot = 90.0},
+    model = 'w_me_knuckle',
   },
 
   [`WEAPON_BAT`] = {
-    model = `WEAPON_BAT`,
-    hash = -1786099057,
+    name = 'WEAPON_BAT',
     damage = 0.3, 
-    disableCritical = true,
-    recoil = 0.001
+    critical = false,
+    recoil = 0.001,
+    officer = { bone = 24818, x = 0.25, y = -0.135, z = -0.2, xRot = -180.0, yRot = 225.0, zRot = 0.0},
+    usual = { bone = 24818, x = 0.25, y = -0.135, z = -0.2, xRot = -180.0, yRot = 225.0, zRot = 0.0},
+    model = 'w_me_bat',
   },
 
   [`WEAPON_HATCHET`] = {
-    model = `WEAPON_HATCHET`,
-    hash = -102973651,
+    name = 'WEAPON_HATCHET',
     damage = 0.25, 
-    disableCritical = true,
-    recoil = 0.001
+    critical = false,
+    recoil = 0.001,
+    officer = { bone = 57597, x = 0.1, y = -0.13, z = -0.2, xRot = 180.0, yRot = -180.0, zRot = 0.0},
+    usual = { bone = 57597, x = 0.1, y = -0.13, z = -0.2, xRot = 180.0, yRot = -180.0, zRot = 0.0},
+    model = 'w_me_hatchet',
   },
 
   [`WEAPON_MACHETE`] = {
-    model = `WEAPON_MACHETE`,
-    hash = -581044007,
+    name = 'WEAPON_MACHETE',
     damage = 0.5, 
-    disableCritical = true,
-    recoil = 0.001
+    critical = false,
+    recoil = 0.001,
+    officer = { bone = 57597, x = 0.1, y = -0.13, z = -0.2, xRot = 180.0, yRot = -180.0, zRot = 0.0},
+    usual = { bone = 57597, x = 0.1, y = -0.13, z = -0.2, xRot = 180.0, yRot = -180.0, zRot = 0.0},
+    model = 'prop_ld_w_me_machette',
   },
   
   [`WEAPON_SWITCHBLADE`] = {
-    model = `WEAPON_SWITCHBLADE`,
-    hash = -538741184,
+    name = 'WEAPON_SWITCHBLADE',
     damage = 0.35, 
-    disableCritical = true,
-    recoil = 0.001
+    critical = false,
+    recoil = 0.001,
+    officer = { bone = 57597, x = 0.1, y = -0.13, z = -0.1, xRot = 180.0, yRot = -180.0, zRot = 0.0},
+    usual = { bone = 57597, x = 0.1, y = -0.13, z = -0.1, xRot = 180.0, yRot = -180.0, zRot = 0.0},
+    model = 'w_me_switchblade',
   },
 
   [`WEAPON_WRENCH`] = {
-    model = `WEAPON_WRENCH`,
-    hash = 419712736,
+    name = 'WEAPON_WRENCH',
     damage = 0.35, 
-    disableCritical = true,
-    recoil = 0.001
+    critical = false,
+    recoil = 0.001,
+    officer = { bone = 57597, x = 0.1, y = -0.13, z = -0.1, xRot = 180.0, yRot = -180.0, zRot = 0.0},
+    usual = { bone = 57597, x = 0.1, y = -0.13, z = -0.1, xRot = 180.0, yRot = -180.0, zRot = 0.0},
+    model = 'w_me_wrench',
   },
 
   [`WEAPON_BATTLEAXE`] = {
-    model = `WEAPON_BATTLEAXE`,
-    hash = 419712736,
+    name = 'WEAPON_BATTLEAXE',
     damage = 0.35, 
-    disableCritical = true,
-    recoil = 0.001
+    critical = false,
+    recoil = 0.001,
+    officer = { bone = 57597, x = 0.1, y = -0.13, z = -0.1, xRot = 180.0, yRot = -180.0, zRot = 0.0},
+    usual = { bone = 57597, x = 0.1, y = -0.13, z = -0.1, xRot = 180.0, yRot = -180.0, zRot = 0.0},
+    model = 'w_me_battleaxe',
   },
 
   -- [[ PISTOL ]] --
-  [`WEAPON_STUNGUN`] = { -- POLICE
-    model = `WEAPON_STUNGUN`,
-    hash = 911657153,
+  [`WEAPON_STUNGUN`] = {
+    name = 'WEAPON_STUNGUN',
     damage = 0.0, 
-    disableCritical = true,
-    recoil = 0.1
+    critical = false,
+    recoil = 0.1,
+    officer = { bone = 58271, x = -0.01, y = 0.05, z = -0.1, xRot = -70.0, yRot = 0.0, zRot = 0.0},
+    usual = { bone = 58271, x = -0.01, y = 0.05, z = -0.1, xRot = -70.0, yRot = 0.0, zRot = 0.0},
+    model = 'w_pi_stungun',
   },
 
-  [`WEAPON_REVOLVER`] = { -- POLICE
-    model = `WEAPON_REVOLVER`,
-    hash = -1045183535,
-    damage = 0.35, 
-    disableCritical = true,
-    recoil = 0.85
-  },
-
-  [`WEAPON_APPISTOL`] = { -- POLICE
-    model = `WEAPON_APPISTOL`, 
-    hash = 584646201,
-    damage = 0.45, 
-    disableCritical = true,
-    recoil = 0.15
-  },
-
-  [`WEAPON_CERAMICPISTOL`] = { -- POLICE
-    model = `WEAPON_CERAMICPISTOL`, 
-    hash, 727643628,
-    damage = 0.55, 
-    disableCritical = true,
-    recoil = 0.1
-  },
-
-  [`WEAPON_REVOLVER_MK2`] = { -- BADSIDE
-    model = `WEAPON_REVOLVER_MK2`,
-    hash = -879347409,
-    damage = 0.25, 
-    disableCritical = true,
-    recoil = 0.85
-  },
-
-  [`WEAPON_PISTOL50`] = { -- BADSIDE
-    model = `WEAPON_PISTOL50`,
-    hash = -1716589765,
+  [`WEAPON_HEAVYPISTOL`] = {
+    name = 'WEAPON_HEAVYPISTOL',
     damage = 0.65, 
-    disableCritical = true,
-    recoil = 0.18
+    critical = false,
+    recoil = 0.1,
+    officer = { bone = 51826, x = -0.01, y = 0.1, z = 0.07, xRot = -115.0, yRot = 0.0, zRot = 0.0},
+    usual = { bone = 57597, x = -0.01, y = -0.175, z = 0.0, xRot = -180.0, yRot = 135.0, zRot = 0.0},
+    model = 'w_pi_heavypistol',
   },
 
-  [`WEAPON_MACHINEPISTOL`] = { -- BADSIDE
-    model = `WEAPON_MACHINEPISTOL`,
-    hash = -619010992,
+  [`WEAPON_REVOLVER`] = {
+    name = 'WEAPON_REVOLVER',
+    damage = 0.30, 
+    critical = false,
+    recoil = 0.85,
+    officer = { bone = 51826, x = -0.01, y = 0.1, z = 0.07, xRot = -115.0, yRot = 0.0, zRot = 0.0},
+    usual = { bone = 57597, x = -0.01, y = -0.175, z = 0.0, xRot = -180.0, yRot = 135.0, zRot = 0.0},
+    model = 'w_pi_revolver',
+  },
+
+  [`WEAPON_NAVYREVOLVER`] = {
+    name = 'WEAPON_NAVYREVOLVER',
+    damage = 0.30, 
+    critical = false,
+    recoil = 0.80,
+    officer = { bone = 51826, x = -0.01, y = 0.1, z = 0.07, xRot = -115.0, yRot = 0.0, zRot = 0.0},
+    usual = { bone = 57597, x = -0.01, y = -0.175, z = 0.0, xRot = -180.0, yRot = 135.0, zRot = 0.0},
+    model = 'w_pi_wep2_gun',
+  },
+
+  [`WEAPON_APPISTOL`] = {
+    name = 'WEAPON_APPISTOL',
+    damage = 0.45, 
+    critical = false,
+    recoil = 0.15,
+    officer = { bone = 51826, x = -0.01, y = 0.1, z = 0.07, xRot = -115.0, yRot = 0.0, zRot = 0.0},
+    usual = { bone = 57597, x = -0.01, y = -0.175, z = 0.0, xRot = -180.0, yRot = 135.0, zRot = 0.0},
+    model = 'w_pi_appistol',
+  },
+
+  [`WEAPON_CERAMICPISTOL`] = {
+    name = 'WEAPON_CERAMICPISTOL',
+    damage = 0.85, 
+    critical = false,
+    recoil = 0.15,
+    officer = { bone = 51826, x = -0.01, y = 0.1, z = 0.07, xRot = -115.0, yRot = 0.0, zRot = 0.0},
+    usual = { bone = 57597, x = -0.01, y = -0.175, z = 0.0, xRot = -180.0, yRot = 135.0, zRot = 0.0},
+    model = 'w_pi_ceramic_pistol',
+  },
+
+  [`WEAPON_COMBATPISTOL`] = {
+    name = 'WEAPON_COMBATPISTOL',
+    damage = 0.80, 
+    critical = false,
+    recoil = 0.15,
+    officer = { bone = 51826, x = -0.01, y = 0.1, z = 0.07, xRot = -115.0, yRot = 0.0, zRot = 0.0},
+    usual = { bone = 57597, x = -0.01, y = -0.175, z = 0.0, xRot = -180.0, yRot = 135.0, zRot = 0.0},
+    model = 'w_pi_combatpistol',
+  },
+
+  [`WEAPON_REVOLVER_MK2`] = {
+    name = 'WEAPON_REVOLVER_MK2',
+    damage = 0.25, 
+    critical = false,
+    recoil = 0.85,
+    officer = { bone = 51826, x = -0.01, y = 0.1, z = 0.07, xRot = -115.0, yRot = 0.0, zRot = 0.0},
+    usual = { bone = 57597, x = -0.01, y = -0.175, z = 0.0, xRot = -180.0, yRot = 135.0, zRot = 0.0},
+    model = 'w_pi_revolvermk2',
+  },
+
+  [`WEAPON_PISTOL50`] = {
+    name = 'WEAPON_PISTOL50',
+    damage = 0.65, 
+    critical = false,
+    recoil = 0.18,
+    officer = { bone = 51826, x = -0.01, y = 0.1, z = 0.07, xRot = -115.0, yRot = 0.0, zRot = 0.0},
+    usual = { bone = 57597, x = -0.01, y = -0.175, z = 0.0, xRot = -180.0, yRot = 135.0, zRot = 0.0},
+    model = 'w_pi_pistol50',
+  },
+
+  [`WEAPON_MACHINEPISTOL`] = {
+    name = 'WEAPON_MACHINEPISTOL',
     damage = 0.39, 
-    disableCritical = true,
-    recoil = 0.1
+    critical = false,
+    recoil = 0.1,
+    officer = { bone = 24818, x = 0.05, y = -0.135, z = 0.0, xRot = -180.0, yRot = 200.0, zRot = 0.0},
+    usual = { bone = 24818, x = 0.05, y = -0.135, z = 0.0, xRot = -180.0, yRot = 200.0, zRot = 0.0},
+    model = 'w_sb_compactsmg'
   },
 
   -- [[ SMG ]] --
-  [`WEAPON_MINISMG`] = { -- BADSIDE
-    model = `WEAPON_MINISMG`,
-    hash = -1121678507,
+  [`WEAPON_MINISMG`] = {
+    name = 'WEAPON_MINISMG',
     damage = 0.75, 
-    disableCritical = true,
-    recoil = 0.18
+    critical = false,
+    recoil = 0.18,
+    officer = { bone = 24818, x = 0.0, y = -0.135, z = 0.0, xRot = -180.0, yRot = 180.0, zRot = 0.0},
+    usual = { bone = 24818, x = 0.0, y = -0.135, z = 0.0, xRot = -180.0, yRot = 180.0, zRot = 0.0},
+    model = 'w_sb_minismg'
   },
 
-  -- [`WEAPON_MICROSMG`] = { -- BADSIDE
-  --   model = `WEAPON_MICROSMG`,
-  --   hash = 324215364,
-  --   damage = 0.75, 
-  --   disableCritical = true,
-  --   recoil = 0.18
-  -- },
-
-  [`WEAPON_SMG`] = { -- POLICE
-    model = `WEAPON_SMG`,
-    hash = 736523883,
+  [`WEAPON_SMG`] = {
+    name = 'WEAPON_SMG',
     damage = 0.55, 
-    disableCritical = true,
-    recoil = 0.1
+    critical = false,
+    recoil = 0.135,
+    officer = { bone = 24818, x = 0.05, y = -0.135, z = 0.0, xRot = -180.0, yRot = 180.0, zRot = 0.0},
+    usual = { bone = 24818, x = 0.05, y = -0.135, z = 0.0, xRot = -180.0, yRot = 180.0, zRot = 0.0},
+    model = 'w_sb_smg'
   },
 
   -- [[ RIFLE ]] --
-
   [`WEAPON_CARBINERIFLE`] = {
-    model = `WEAPON_CARBINERIFLE`,
-    hash = -2084633992,
+    name = 'WEAPON_CARBINERIFLE',
     damage = 0.45, 
-    disableCritical = true,
-    recoil = 0.08
+    critical = false,
+    recoil = 0.08,
+    officer = { bone = 24818, x = 0.125, y = -0.175, z = -0.125, xRot = 90.0, yRot = 180.0, zRot = 0.0},
+    usual = { bone = 24818, x = 0.125, y = -0.175, z = -0.125, xRot = 90.0, yRot = 180.0, zRot = 0.0},
+    model = 'w_ar_carbinerifle'
   },
 
   [`WEAPON_ASSAULTRIFLE`] = {
-    model = `WEAPON_ASSAULTRIFLE`,
-    hash = -1074790547,
+    name = 'WEAPON_ASSAULTRIFLE',
     damage = 0.50, 
-    disableCritical = true,
-    recoil = 0.23
+    critical = false,
+    recoil = 0.23,
+    officer = { bone = 24818, x = 0.125, y = -0.175, z = -0.125, xRot = 90.0, yRot = 180.0, zRot = 0.0},
+    usual = { bone = 24818, x = 0.125, y = -0.175, z = -0.125, xRot = 90.0, yRot = 180.0, zRot = 0.0},
+    model = 'w_ar_assaultrifle'
   },
 
   -- [[ SHOUTGUN ]] --
-
   [`WEAPON_BULLPUPSHOTGUN`] = {
-    model = `WEAPON_BULLPUPSHOTGUN`, 
-    hash = 	-1654528753,
+    name = 'WEAPON_BULLPUPSHOTGUN',
     damage = 0.8,
-    disableCritical = true,
-    recoil = 0.8
+    critical = false,
+    recoil = 0.8,
+    officer = { bone = 24818, x = 0.0, y = -0.15, z = 0.0, xRot = 0.0, yRot = 0.0, zRot = 0.0},
+    usual = { bone = 24818, x = 0.0, y = -0.15, z = 0.0, xRot = 0.0, yRot = 0.0, zRot = 0.0},
+    model = 'w_sg_bullpupshotgun'
   },
-
-  -- [`WEAPON_PUMPSHOTGUN`] = {
-  --   model = `WEAPON_PUMPSHOTGUN`, 
-  --   hash = 	487013001,
-  --   damage = 0.27,
-  --   disableCritical = true,
-  --   recoil = 0.8
-  -- },
 
   -- [[ SNIPER ]] --
   [`WEAPON_HEAVYSNIPER`] = {
-    model = `WEAPON_HEAVYSNIPER`,
-    hash = 205991906,
+    name = 'WEAPON_HEAVYSNIPER',
     damage = 2.0, 
-    disableCritical = true,
-    recoil = 0.5
+    critical = false,
+    recoil = 0.5,
+    officer = { bone = 24818, x = 0.2, y = -0.175, z = 0.125, xRot = 90.0, yRot = 180.0, zRot = 0.0},
+    usual = { bone = 24818, x = 0.2, y = -0.175, z = 0.125, xRot = 90.0, yRot = 180.0, zRot = 0.0},
+    model = 'w_sr_heavysnipermk2'
   },
 
-  [`WEAPON_SNIPERRIFLE`] = { -- 
-    model = `WEAPON_SNIPERRIFLE`,
-    hash = 100416529,
+  [`WEAPON_HEAVYSNIPER_MK2`] = {
+    name = 'WEAPON_HEAVYSNIPER_MK2',
     damage = 2.0, 
-    disableCritical = true,
-    recoil = 0.5
+    critical = false,
+    recoil = 0.5,
+    officer = { bone = 24818, x = 0.2, y = -0.175, z = 0.125, xRot = 90.0, yRot = 180.0, zRot = 0.0},
+    usual = { bone = 24818, x = 0.2, y = -0.175, z = 0.125, xRot = 90.0, yRot = 180.0, zRot = 0.0},
+    model = 'w_sr_heavysnipermk2'
+  },
+
+  [`WEAPON_SNIPERRIFLE`] = {
+    name = 'WEAPON_SNIPERRIFLE',
+    damage = 2.0, 
+    critical = false,
+    recoil = 0.5,
+    officer = { bone = 24818, x = 0.2, y = -0.175, z = 0.125, xRot = 90.0, yRot = 180.0, zRot = 0.0},
+    usual = { bone = 24818, x = 0.2, y = -0.175, z = 0.125, xRot = 90.0, yRot = 180.0, zRot = 0.0},
+    model = 'w_sr_sniperrifle'
   },
 }
