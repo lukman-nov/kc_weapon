@@ -8,7 +8,11 @@ description     'Weapon Core'
 lua54           'yes'
 
 shared_script   '@ox_lib/init.lua'
-server_script  'versioncheck.lua'
+
+server_scripts {
+    'config.lua',
+    'versioncheck.lua'
+}
 
 client_scripts {
     'config.lua',
