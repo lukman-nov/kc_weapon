@@ -3,7 +3,7 @@ game            'gta5'
 
 name            'kc_weapon'
 author          'Lukman_Nov#5797'
-version         '2.0.5'
+version         '2.1.0'
 description     'Weapon Core'
 lua54           'yes'
 
