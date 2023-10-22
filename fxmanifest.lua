@@ -3,7 +3,7 @@ game            'gta5'
 
 name            'kc_weapon'
 author          'Lukman_Nov#5797'
-version         '2.2.0'
+version         '2.3.0'
 description     'Weapon Core'
 lua54           'yes'
 
@@ -16,6 +16,7 @@ server_scripts {
 
 client_scripts {
     'config.lua',
+    'client/main.lua',
     'client/dmg.lua',
     'client/recoil.lua',
     'client/onback.lua',
@@ -23,12 +24,9 @@ client_scripts {
 
 escrow_ignore {
     'config.lua',
-    'client/dmg.lua',
-    'client/recoil.lua',
-    'client/onback.lua'
+    'client/main.lua'
 }
 
 dependencies {
-    'ox_lib',
-    'ox_inventory'
+    'ox_lib'
 }
